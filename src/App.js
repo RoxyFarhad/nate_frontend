@@ -7,27 +7,15 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import axios from "axios"; 
-import $ from "jquery";
 import DataComp from "./dataComponent.js"
 
 import './App.scss';
-
-function table_values(data) {
-return (
-    Object.keys(data).map((key, i) => (
-    <p key={i}> 
-      <span> {key} - </span> <span> {data[key]} </span>
-    </p>
-    ))
-  )
-}
 
 function App() {
 
   const [url, setUrl] = useState("")
   const [helperText, setHelperText] = useState("")
   const [history, setHistory] = useState(JSON.parse(localStorage.getItem("history")) || [])
-  const [visible, setVisible] = useState(false)
   const [anchorEl, setAnchorEl] = useState(null);
   const [filter, setFilter] = useState("")
 
@@ -35,7 +23,7 @@ function App() {
 
   useEffect(() => {
     localStorage.setItem('history', JSON.stringify(history)); 
-  }, [history])
+  }, [])
 
 
   const handleSubmit = async (e) => {
